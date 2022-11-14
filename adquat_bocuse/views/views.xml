@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="adquat_crm_lead_form" model="ir.ui.view">
+        <field name="name">adquat.crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[@name='opportunity_partner']/field[@name='lost_reason_id']" position="before">
+<!--                <label for="Infos Prestation"/>-->
+                <field name="type_evenement"/>
+                <field name="date_prestation"/>
+                <field name="reunion"/>
+                <field name="journee_etude"/>
+                <field name="heures_prevu"/>
+                <field name="nombre_convives"/>
+                <field name="dont_enfants"/>
+                <field name="etablissement_souhaite"/>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="type_occasion"/>
+                <field name="autre_occasion" attrs="{'invisible': [('type_occasion', 'not in', ['4'])]}"/>
+                <field name="budget_souhaite"/>
+                <field name="cocktail"/>
+                <field name="infos_cocktail1" attrs="{'invisible': [('cocktail', '=', False)]}"/>
+                <field name="infos_cocktail2" attrs="{'invisible': [('cocktail', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="adquat_sale_order_form" model="ir.ui.view">
+        <field name="name">adquat.sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale_header']/group[@name='partner_details']" position="inside">
+                <field name="type_evenement_so"/>
+                <field name="date_prestation_so"/>
+                <field name="reunion_so"/>
+                <field name="journee_etude_so"/>
+                <field name="heures_prevu_so"/>
+                <field name="nombre_convives_so"/>
+                <field name="dont_enfants_so"/>
+                <field name="etablissement_souhaite_so"/>
+            </xpath>
+            <xpath expr="//group[@name='sale_header']/group[@name='order_details']" position="inside">
+                <field name="type_occasion_so"/>
+                <field name="autre_occasion_so" attrs="{'invisible': [('type_occasion_so', 'not in', ['4'])]}"/>
+                <field name="budget_souhaite_so"/>
+                <field name="cocktail_so"/>
+                <field name="infos_cocktail1_so" attrs="{'invisible': [('cocktail_so', '=', False)]}"/>
+                <field name="infos_cocktail2_so" attrs="{'invisible': [('cocktail_so', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
