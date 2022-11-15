@@ -13,7 +13,7 @@
                 </xpath>
                 <xpath expr="//button[@name='action_cancel']" position="before">
                     <button name="button_create_new_version" states="draft,sent" type="object"
-                            string="Create a new version"/>
+                            string="Créer une nouvelle version"/>
                 </xpath>
                 <xpath expr="//div[hasclass('oe_button_box')]/button" position="before">
                     <button name="action_view_version"
