@@ -73,12 +73,12 @@ class SaleOrder(models.Model):
     reunion_so = fields.Boolean("Réunion", default=False)
     journee_etude_so = fields.Boolean("Journée d'étude", default=False)
     heures_prevu_so = fields.Selection(string="Heure repas ou événement", selection=[
-        ('12', '12h30'),
+        ('12', '12h'),
         ('12-30', '12h30'),
         ('13', '13h'),
         ('19', '19h'),
         ('19-30', '19h30'),
-        ('20', '20h30'),
+        ('20', '20h'),
         ('20-30', '20h30')
     ])
     nombre_convives_so = fields.Integer("Nombre de convives")
