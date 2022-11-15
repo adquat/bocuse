@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+
+        <record model="ir.ui.view" id="view_sale_order_version_form">
+          <field name="name">sale_order_version_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="display_name"/>
+                    <field name="name" invisible="1"/>
+                </xpath>
+                <xpath expr="//button[@name='action_cancel']" position="before">
+                    <button name="button_create_new_version" states="draft,sent" type="object"
+                            string="Create a new version"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]/button" position="before">
+                    <button name="action_view_version"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('version_count', '=', 0)]}">
+                    <field name="version_count" widget="statinfo" string="Versions"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_sale_order_version_tree">
+          <field name="name">sale_order_version_tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="display_name"/>
+                    <field name="name" invisible="1"/>
+                </xpath>
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="decoration-muted">state in ('cancel', 'archive')</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_quotation_version_tree">
+          <field name="name">quotation_version_tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="display_name"/>
+                    <field name="name" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+  </data>
+</odoo>
